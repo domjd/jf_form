@@ -21,7 +21,7 @@ body{
   justify-content: center;
   align-items: center;
   height: auto;
-  width: 400px;
+  width: auto;
   min-width: 180px;
   border: 1px solid gray;
   border-radius: 8px;
