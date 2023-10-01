@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="lds-ring" id="loader"><div></div><div></div><div></div><div></div></div>
+        <form action="" id="leadform" autocomplete="off">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="mobilenumber">Mobile Number:</label>
+            <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" required>
+            <label for="q">Limited Company Search:</label><br>
+            <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
+            <div id="result"></div>
+            <label for="fname">Limited Company Name:</label><br>
+            <input type="text" id="cname" name="cname" readonly required><br>
+            <label for="lname">Limited Company Address:</label><br>
+            <textarea id="caddress" name="caddress" rows="4" readonly required></textarea><br>
+            <label for="amountrequired">Amount Required:</label><br>
+            <select id="amountrequired" name="amountrequired" required>
+                <option value="£10,000">£10,000</option>
+                <option value="£20,000">£20,000</option>
+                <option value="£30,000">£30,000</option>
+                <option value="£40,000">£40,000</option>
+                <option value="£50,000">£50,000</option>
+                <option value="£75,000">£75,000</option>
+                <option value="£100,000">£100,000</option>
+                <option value="£125,000">£125,000</option>
+                <option value="£150,000">£150,000</option>
+                <option value="£200,000+">£200,000+</option>
+            </select><br>
+            
+            <input type="checkbox" id="chouse" name="chouse" value="chouse" required>
+            <label for="chouse"> I confirm my business is registered at Companies House</label><br>
+            <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" required>
+            <label for="bankaccount"> I confirm I have a business bank account</label><br>
+            <input type="checkbox" id="property" name="property" value="property" required>
+            <label for="property"> I confirm I have property that could be used as loan security</label><br><br>
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+</body>
+</html>
+
