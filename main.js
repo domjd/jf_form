@@ -74,12 +74,10 @@ window.onload = function() {
   let leadForm = document.getElementById("leadform");
   let loader = document.getElementById("loader");
 
-  console.log(document.getElementById('chouse').checked)
 
   leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    leadForm.style.display = "none";
-    loader.style.display = "inline-block"
+    
     const formData = {
       "firstName": document.getElementById("fname").value,
       "lastName": document.getElementById("lname").value,
@@ -92,17 +90,20 @@ window.onload = function() {
       "amountRequired": document.getElementById("amountrequired").value,
       "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
     }
-    console.log(JSON.stringify(formData)  );
+
   
     // handle submit
-    const request = fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitform`,
-    {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)}).then((response) => {
-      console.log(response);
-      leadForm.reset();
-      //leadForm.style.display = "block";
-      //loader.style.display = "none"
-      window.location.href = "https://www.equiddy.com";
-    }) 
+    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitform`,
+    {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)})
+    .then(response => response.json())
+    .then(data => {
+      if(data.success){
+        window.location.href =  'https://www.equiddy.com';
+      } else {
+        alert("Error, form not submitted")
+      }
+    })
+ 
   });
   
 
