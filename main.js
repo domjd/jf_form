@@ -90,7 +90,7 @@ window.onload = function() {
       "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
       "addressSnippet": selectedCompany.address_snippet,
       "amountRequired": document.getElementById("amountrequired").value,
-      "confirmations": [document.getElementById('chouse').checked,document.getElementById('bankaccount').checked,document.getElementById('property').checked]
+      "confirmations": [document.getElementById('bankaccount').checked,document.getElementById('property').checked]
     }
     console.log(JSON.stringify(formData)  );
   
@@ -98,10 +98,10 @@ window.onload = function() {
     const request = fetch(`http://localhost:3000/jotform/submitform`,
     {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)}).then((response) => {
       console.log(response);
-      alert("SUCCESS");
       leadForm.reset();
-      leadForm.style.display = "block";
-      loader.style.display = "none"
+      //leadForm.style.display = "block";
+      //loader.style.display = "none"
+      window.location.href = "https://www.equiddy.com";
     }) 
   });
   
