@@ -15,7 +15,7 @@ function showResults(val) {
       return;
     }
     let list = '';
-    fetch(`http://localhost:3000/companies/getCompanies?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
+    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompanies?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
      function (response) {
        return response.json();
      }).then(function (data) {
@@ -95,7 +95,7 @@ window.onload = function() {
     console.log(JSON.stringify(formData)  );
   
     // handle submit
-    const request = fetch(`http://localhost:3000/jotform/submitform`,
+    const request = fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/jotform/submitform`,
     {headers: {"Content-Type":"application/json"},method: "POST",body: JSON.stringify(formData)}).then((response) => {
       console.log(response);
       leadForm.reset();
