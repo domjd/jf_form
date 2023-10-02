@@ -77,7 +77,8 @@ window.onload = function() {
 
   leadForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+    leadForm.style.display = "none";
+    loader.style.display = "inline-block"
     const formData = {
       "firstName": document.getElementById("fname").value,
       "lastName": document.getElementById("lname").value,
