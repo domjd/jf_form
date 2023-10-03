@@ -23,8 +23,7 @@ body{
   height: auto;
   width: auto;
   min-width: 180px;
-  border: 1px solid gray;
-  border-radius: 8px;
+  min-height: 684px;
   padding: 24px;
   background-color: white;
   margin-left:0;
