@@ -98,7 +98,7 @@ window.onload = function() {
     .then(response => response.json())
     .then(data => {
       if(data.success){
-        window.location.href =  'https://www.equiddy.com';
+        window.top.location.href = 'https://www.equiddy.com';
       } else {
         alert("Error, form not submitted")
       }
