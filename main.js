@@ -6,7 +6,6 @@ function showResults(val) {
 
     if(document.getElementById('q').value === ''){
      res.style.display = "none";
-     console.log("true") 
     }
 
 
@@ -28,7 +27,6 @@ function showResults(val) {
        res.innerHTML = '<ul>' + list + '</ul>';
        res.style.display = "block"
        companyArray = data.items;
-       console.log(companyArray);
        return true;
      }).catch(function (err) {
        console.warn('Something went wrong.', err);
@@ -62,7 +60,6 @@ function showResults(val) {
 
   for (let i = 0; i < words.length; i++) {
       words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();
-      console.log(words[i])
   }
   return words.join(" ");
 }
@@ -86,6 +83,8 @@ window.onload = function() {
       "mobilenumber":document.getElementById("mobilenumber").value,
       "title": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
+      "companyStatus": selectedCompany.company_status,
+      "companyDescription": selectedCompany.description,
       "companyurl": "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self,
       "addressSnippet": selectedCompany.address_snippet,
       "amountRequired": document.getElementById("amountrequired").value,
