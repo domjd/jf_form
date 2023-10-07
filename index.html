@@ -18,7 +18,7 @@
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br>
             <label for="mobilenumber">Mobile Number:</label>
-            <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" required>
+            <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
             <label for="q">Limited Company Search:</label><br>
             <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
             <div id="result"></div>
