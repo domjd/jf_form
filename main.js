@@ -14,7 +14,7 @@ function showResults(val) {
       return;
     }
     let list = '';
-    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompanies?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
+    fetch(`https://sea-lion-app-lccwh.ondigitalocean.app/companies/getCompaniesMini?companyname=${val}`, {method: 'GET', crossDomain: true}).then(
      function (response) {
        return response.json();
      }).then(function (data) {
