@@ -81,7 +81,7 @@ window.onload = function() {
       "lastName": document.getElementById("lname").value,
       "email": document.getElementById("email").value,
       "mobilenumber":document.getElementById("mobilenumber").value,
-      "title": selectedCompany.title,
+      "companyname": selectedCompany.title,
       "companyNumber": selectedCompany.company_number,
       "companyStatus": selectedCompany.company_status,
       "companyDescription": selectedCompany.description,
