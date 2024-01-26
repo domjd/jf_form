@@ -225,11 +225,10 @@ textarea{
 
 
 #result {
-    padding: 3px;
+
     margin-right: 0.4rem;
     position: absolute;
     background-color: white;
-    width: 420px;
     display: none;
     border-radius: 2px;
     transition: all 0.5s;
