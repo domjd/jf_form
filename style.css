@@ -22,11 +22,10 @@ body{
   align-items: center;
   flex-direction: column;
   height: auto;
-  width: auto;
-  max-width: 480px;
+  width: 100%;
   min-width: 180px;
   min-height: 684px;
-  padding: 24px;
+  padding: 24px !important;
   background-color: white;
   margin-left:0;
   margin-right:0;
