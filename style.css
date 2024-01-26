@@ -18,13 +18,11 @@ body{
 #container {
   background-color: transparent !important;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   height: auto;
   width: 100%;
   min-width: 180px;
-  min-height: 684px;
   padding: 24px !important;
   background-color: white;
   margin-left:0;
