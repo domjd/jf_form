@@ -6,48 +6,96 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="./main.js"></script>
+    <script src="./valid.js"></script>
+    <script src="./currency.js"></script>
 </head>
 <body>
     <div id="container">
         <div class="lds-ring" id="loader"><div></div><div></div><div></div><div></div></div>
-        <form action="" id="leadform" autocomplete="off">
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname" minlength="2" pattern="^[a-zA-Z]+$" title="Must be letters only with two characters minimum" required><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="mobilenumber">Mobile Number:</label>
-            <input type="tel" id="mobilenumber" name="mobilenumber" pattern="^\d{11}$" title="Mobile number must be 11 numbers" required>
-            <label for="q">Limited Company Search:</label><br>
-            <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" placeholder="Search for company here to fill in fields below"/><br>
-            <div id="result"></div>
-            <label for="fname">Limited Company Name:</label><br>
-            <input type="text" id="cname" name="cname" readonly required><br>
-            <label for="lname">Limited Company Address:</label><br>
-            <textarea id="caddress" name="caddress" rows="4" readonly required></textarea><br>
-            <label for="amountrequired">Amount Required:</label><br>
-            <select id="amountrequired" name="amountrequired" required>
-                <option value="£5,000">£5,000</option>
-                <option value="£10,000">£10,000</option>
-                <option value="£20,000">£20,000</option>
-                <option value="£30,000">£30,000</option>
-                <option value="£40,000">£40,000</option>
-                <option value="£50,000">£50,000</option>
-                <option value="£75,000">£75,000</option>
-                <option value="£100,000">£100,000</option>
-                <option value="£125,000">£125,000</option>
-                <option value="£150,000">£150,000</option>
-                <option value="£200,000+">£200,000+</option>
-            </select><br>
-            <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" required>
-            <label for="bankaccount"> I confirm I have a business bank account</label><br>
-            <input type="checkbox" id="property" name="property" value="property" required>
-            <label for="property"> I confirm I have property that could be used as loan security</label><br><br>
+        <form action="" id="leadform" autocomplete="on">
+            <div class = "form-field">
+                <label for="firstname">First Name <span class="required">*</span></label>
+                <input type="text" id="firstname" name="firstname" placeholder="First Name" autocomplete="given-name" onblur="validateField('firstname')" title="Must be letters only with two characters minimum">
+                <span class="error" id="firstnameerror"></span>
+            </div>
+            
+            <div class = "form-field ">
+                <label for="lastname">Last Name <span class="required">*</span></label><br>
+                <input type="text" id="lastname" name="lastname" placeholder="Last Name" autocomplete="family-name" onblur="validateField('lastname')" title="Must be letters only with two characters minimum"><br>
+                <span class="error" id="lastnameerror"></span>
+            </div>
+            
+            <div class = "form-field">
+                <label for="email">Email <span class="required">*</span></label><br>
+                <input type="email" placeholder="Email Address" id="email" name="email" onblur="validateField('email')"><br>
+                <span class="error" id="emailerror"></span>
+            </div>
+            
+            <div class = "form-field">
+                <label for="mobilenumber">Mobile Number <span class="required">*</span></label>
+                <input type="tel" id="mobilenumber" placeholder="Mobile Number" name="mobilenumber" onblur="validateField('mobilenumber')" title="Mobile number must be 11 numbers">
+                <span class="error" id="mobilenumbererror">Mobile Number Must Be 11 numbers!</span>
+            </div>
+            
+            <div class = "form-field">
+                <label for="propertytype">Type of property being offered as loan security<span class="required">*</span></label>
+                <select id="propertytype" name="propertytype" onchange="validateField('propertytype')">
+                    <option value="" disabled selected hidden>Property Type</option>
+                    <option value="Owner Occupied Residential House">Owner Occupied Residential House</option>
+                    <option value="Owner Occupied Residential Bungalow">Owner Occupied Residential Bungalow</option>
+                    <option value="Owner Occupied Residential Apartment">Owner Occupied Residential Apartment</option>
+                    <option value="Investment Property House">Investment Property House</option>
+                    <option value="Investment Property Apartment">Investment Property Apartment</option>
+                    <option value="Investment Property Semi-Commercial">Investment Property Semi-Commercial</option>
+                    <option value="Investment Property Commercial  ">Investment Property Commercial </option>
+                    <option value="Purchase Premises">Purchase Premises</option>
+                </select>
+                <span class="error" id="propertytypeerror"></span>
+            </div>
+            <div class = "form-field">
+                <label for="propertyvalue" id ="propertyvaluelabel">Property Value (£) <span class="required">*</span></label>
+                <input type="text" inputmode="numeric" id="propertyvalue" onblur="validateField('propertyvalue')" class="number-separator" name ="propertyvalue" placeholder="Enter Property Value" >
+                <span class="error" id="propertyvalueerror"></span>
+                <p class = "sublabel" id="propertyvaluesublabel">Property value must be over £100,000</p>
+            </div>
+            <div class = "form-field">
+                <label for="amountrequired">Amount Required <span class="required">*</span></label>
+                <select id="amountrequired" name="amountrequired" onchange="validateField('amountrequired')">
+                    <option value="" disabled selected hidden>Loan Amount</option>
+                    <option value="£25,000">£25,000</option>
+                    <option value="£30,000">£30,000</option>
+                    <option value="£40,000">£40,000</option>
+                    <option value="£50,000">£50,000</option>
+                    <option value="£75,000">£75,000</option>
+                    <option value="£100,000">£100,000</option>
+                    <option value="£125,000">£125,000</option>
+                    <option value="£150,000">£150,000</option>
+                    <option value="£200,000+">£200,000+</option>
+                </select>
+                <span class="error" id="amountrequirederror"></span>
+            </div>
+     
+            <div class = "form-field">
+                <label for="companyname">Company Name <span class="required">*</span></label><br>
+                <input type="text" name="companyname" id="companyname" onblur="validateField('companyname')" onKeyUp="showResults(this.value)" placeholder="Search for your Company details here"/><br>
+                <div id="result"></div>
+                <span class="error" id="companynameerror"></span>
+            </div>
+       
+      
+            <div class="grid-container">
+                <input type="checkbox" id="bankaccount" name="bankaccount" value="bankaccount" onchange="validateField('bankaccount')">
+                <label for="bankaccount"> I confirm I have a business bank account <span class="required">*</span></label>
+                <span class="error" id="bankaccounterror"></span>
+       
+                <input type="checkbox" id="property" name="property" value="property" onchange="validateField('property')">
+                <label for="property"> I confirm I own a property that could be used as loan security <span class="required">*</span></label>
+                <span class="error" id="propertyerror"></span>
+            </div>
+            <br>
             <button type="submit">Submit</button>
 
         </form>
     </div>
 </body>
 </html>
-
