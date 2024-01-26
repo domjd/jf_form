@@ -28,7 +28,7 @@ function showResults(val) {
     function (response) {
       return response.json();
     }).then(function (data) {
-      for (let i=0; i<data.items.length; i++) {
+      for (let i=0; i<3; i++) {
         list += `<li class="company" onclick=setCompany(${i})>` + 
         data.items[i].title + ' | ' + data.items[i].company_number + '<div class="companyAddress">' + data.items[i].address_snippet + "</div>" +
         '</li>'; 
