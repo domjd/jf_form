@@ -178,8 +178,10 @@ const submitForm = async () => {
               throw new Error(`Server responded with ${response.status}`);
           }
       } else {
-          const successMessage = await response.text();
-          window.top.location.href = 'https://equiddy.com/thank-you/';
+          const res = await response.json();
+          //const successMessage = await response.text();
+          const redirectURL = res.redirecturl;
+          window.top.location.href = redirectURL;
           //alert(successMessage);
       }
   } catch (error) {
