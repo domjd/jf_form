@@ -137,6 +137,10 @@ window.onload = function() {
 })
 
 const submitForm = async () => {
+  const submitButton = document.querySelector('button[type="submit"]');
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting..."
 
   const companyUrl = selectedCompany.links && selectedCompany.links.self
   ? "https://find-and-update.company-information.service.gov.uk" + selectedCompany.links.self
@@ -170,6 +174,8 @@ const submitForm = async () => {
       method: "POST",body: JSON.stringify(formData)});
 
       if (!response.ok) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit"
           if (response.status === 400) {
               const errorResponse = await response.json();
               handleValidationErrors(errorResponse.errors);
